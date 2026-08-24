@@ -3,8 +3,17 @@ import socket
 from datetime import datetime, timezone
 
 from flask import Flask, jsonify
+from prometheus_flask_exporter import PrometheusMetrics
 
 app = Flask(__name__)
+metrics = PrometheusMetrics(app)
+
+metrics.info(
+    "app_info",
+    "AWS EKS Platform API information",
+    version=os.getenv("APP_VERSION", "development"),
+    environment=os.getenv("APP_ENV", "local"),
+)
 
 
 @app.get("/")
@@ -47,6 +56,16 @@ def info():
             "hostname": socket.gethostname(),
         }
     )
+
+
+@app.get("/error")
+def error():
+    return jsonify(
+        {
+            "status": "error",
+            "message": "Intentional 500 error for Grafana alert testing",
+        }
+    ), 500
 
 
 if __name__ == "__main__":
