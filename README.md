@@ -10,6 +10,9 @@ The environment is designed as a development/portfolio platform that demonstrate
 
 ---
 
+<img width="1448" height="1086" alt="aws-eks-platform-architecture png" src="https://github.com/user-attachments/assets/d4076eff-9783-45a7-89f9-53c047eae5cd" />
+
+
 ## Architecture
 
 The platform includes:
