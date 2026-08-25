@@ -28,10 +28,10 @@ data "aws_iam_policy_document" "github_actions_assume_role" {
     }
 
     condition {
-      test     = "StringLike"
+      test     = "StringEquals"
       variable = "token.actions.githubusercontent.com:sub"
       values = [
-        "repo:ebekondo/aws-eks-platform:*"
+        "repo:ebekondo@277884119/aws-eks-platform@1345502394:ref:refs/heads/main"
       ]
     }
   }
